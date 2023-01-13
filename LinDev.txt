@@ -1,0 +1,14 @@
+﻿// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © solitario
+
+//@version=4
+study("LinDev",shorttitle="LD",overlay=true)
+data = close
+length = 12
+media = sma(data,length)
+LinDev(x,y,z) =>
+    LD = 0.0
+    for i = 0 to y -1
+        LD := LD + abs(z - x[i]) / y
+    LD
+plot(LinDev(data,length,media), color=#05edf5)
